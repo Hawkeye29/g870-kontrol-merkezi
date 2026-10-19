@@ -1,6 +1,6 @@
 <div align="center">
 
-> **Test kapsamı:** Bu uygulama yalnızca geliştiricinin kullandığı tek bir **Casper Excalibur G870 / 1362-BV70X-C** bilgisayarda test edilmiştir. Diğer G870 donanım yapılandırmaları, BIOS/firmware sürümleri ve farklı modellerde uyumluluk doğrulanmamıştır. Aynı model adı, aynı donanım ve davranış anlamına gelmeyebilir.
+> **Test kapsamı:** Bu uygulama yalnızca geliştiricinin kullandığı tek bir **Casper Excalibur G870 / 1362-BV70X-C** İ7-13620H RTX 5070 bilgisayarda test edilmiştir. Diğer G870 donanım yapılandırmaları, BIOS/firmware sürümleri ve farklı modellerde uyumluluk doğrulanmamıştır. Aynı model adı, aynı donanım ve davranış anlamına gelmeyebilir.
   <img src="src/Assets/G870.svg" width="104" alt="G870 Kontrol Merkezi logosu">
   <h1>G870 Kontrol Merkezi</h1>
   <p>Excalibur G870 için fan, performans, klavye aydınlatması ve GPU modu kontrolü.</p>
