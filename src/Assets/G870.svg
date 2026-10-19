@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<rect x="8" y="8" width="240" height="240" rx="48" fill="#131c28"/>
+<path d="M187.397 68.603 A84 84 0 1 0 187.397 187.397 L211 164 V128 H158" fill="none" stroke="#34d3de" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#a2f3f4"><path id="blade" d="M116 121 C104 104 112 86 133 89 C149 93 145 106 128 119 C124 123 120 125 116 121 Z"/><use href="#blade" transform="rotate(120 119 128)"/><use href="#blade" transform="rotate(240 119 128)"/></g>
+<circle cx="119" cy="128" r="8" fill="#34d3de"/>
+</svg>
