@@ -1,0 +1,24 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G870 Kontrol Merkezi", "src\G870KontrolMerkezi.csproj", "{A04C6F23-62CE-44FC-A002-37C8EB16EA8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G870 Tests", "tests\G870KontrolMerkezi.Tests.csproj", "{67301A15-AD88-47E6-8C13-7AB643EF2277}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A04C6F23-62CE-44FC-A002-37C8EB16EA8B}.Debug|x64.ActiveCfg = Debug|x64
+		{A04C6F23-62CE-44FC-A002-37C8EB16EA8B}.Debug|x64.Build.0 = Debug|x64
+		{A04C6F23-62CE-44FC-A002-37C8EB16EA8B}.Release|x64.ActiveCfg = Release|x64
+		{A04C6F23-62CE-44FC-A002-37C8EB16EA8B}.Release|x64.Build.0 = Release|x64
+		{67301A15-AD88-47E6-8C13-7AB643EF2277}.Debug|x64.ActiveCfg = Debug|x64
+		{67301A15-AD88-47E6-8C13-7AB643EF2277}.Debug|x64.Build.0 = Debug|x64
+		{67301A15-AD88-47E6-8C13-7AB643EF2277}.Release|x64.ActiveCfg = Release|x64
+		{67301A15-AD88-47E6-8C13-7AB643EF2277}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+EndGlobal

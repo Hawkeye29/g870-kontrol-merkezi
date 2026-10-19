@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Management;
@@ -21,7 +21,7 @@ namespace G870Windows {
                     if (target != null) { item.Dispose(); target.Dispose(); throw new IOException("Birden fazla RW_GMWMI aygıtı bulundu."); }
                     target = item;
                 }
-                if (target == null) throw new IOException("RW_GMWMI bulunamadı. Excalibur sürücüsünü kontrol edin.");
+                if (target == null) throw new IOException("RW_GMWMI bulunamadı. BIOS/ACPI WMI desteğini ve Windows WmiAcpi aygıtını kontrol edin.");
                 using (target) {
                     target["BufferBytes"] = (byte[])request.Clone();
                     target.Put(new PutOptions { Timeout = TimeSpan.FromSeconds(5) });

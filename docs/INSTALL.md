@@ -1,6 +1,6 @@
 # Kurulum ve kaldırma
 
-Uygulamayı ilk kez çalıştırmadan önce orijinal sürücünün kurulu olduğunu kontrol edin. Aynı anda OEM arayüzünden donanım komutu göndermeyin. Pencerenin X düğmesi uygulamayı tepsiye gizler; tamamen kapatmak için tepsi simgesine sağ tık → Çıkış seçin.
+Uygulama yerleşik Windows WmiAcpi sürücüsünden BIOS/ACPI arayüzüne erişir. Casper Control Center sürücüsü kurulumu gerekmez. Aynı anda OEM arayüzünden donanım komutu göndermeyin. Pencerenin X düğmesi uygulamayı tepsiye gizler; tamamen kapatmak için tepsi simgesine sağ tık → Çıkış seçin.
 
 ## Sistem değişiklikleri
 
@@ -15,4 +15,4 @@ Profiller `%LOCALAPPDATA%\G870ControlCenterWindows` altında saklanır. Windows 
 
 OEM sürücüsünü veya diğer üretici görevlerini kaldırmayın. Uygulama BIOS/EFI yüklemez. MUX modu kaldırma işlemiyle geri alınmaz; gerekiyorsa önce istenen GPU modunu seçip yeniden başlatın.
 
-Uygulama ZIP dosyasının tamamını çıkarın ve EXE yanındaki PowerPlans klasörünü koruyun. Güç planları için orijinal Control Center gerekmez. Donanım erişimi için OEM sürücüsü gerekir. Windows başlangıcı kurulumu üç plan dosyasını da uygulamayla kopyalar.
+Uygulama ZIP dosyasının tamamını çıkarın ve EXE yanındaki PowerPlans klasörünü koruyun. Güç planları için orijinal Control Center gerekmez. Donanım erişimi yerleşik Windows WmiAcpi sürücüsünden sağlanır. Windows başlangıcı kurulumu üç plan dosyasını da uygulamayla kopyalar.

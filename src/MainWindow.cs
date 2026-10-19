@@ -105,7 +105,7 @@ namespace G870Windows {
         readonly FlowLayoutPanel muxActions=new FlowLayoutPanel();
         bool muxInitialized;
         readonly NotifyIcon tray=new NotifyIcon();
-        Icon brandedIcon;
+        Icon brandedIcon,trayIcon;bool trayCleaned;
         TrayPopup trayPopup;
         readonly ToolStripMenuItem startupItem=new ToolStripMenuItem("Windows açılışında başlat");
         bool exitRequested,startInTray;Settings settings=new Settings();
@@ -218,8 +218,15 @@ namespace G870Windows {
             catch(Exception ex){SyncStartupControls();feedback.Text="Windows başlangıç tercihi değiştirilemedi: "+ex.Message;MessageBox.Show(this,feedback.Text,"Windows başlangıcı",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
             finally{autoStart.Enabled=startupItem.Enabled=true;}
         }
+        void CleanupTray(){
+            if(trayCleaned)return;trayCleaned=true;
+            // Detach the native tray icon while its owned handle is still valid.
+            tray.Visible=false;tray.Icon=null;tray.Dispose();
+            if(trayPopup!=null){trayPopup.Dispose();trayPopup=null;}
+            if(trayIcon!=null){trayIcon.Dispose();trayIcon=null;}
+        }
         protected override void Dispose(bool disposing){
-            // Keep the icon alive until WinForms has finished destroying window and tray handles.
+            if(disposing)CleanupTray();
             base.Dispose(disposing);
             if(disposing && brandedIcon!=null){brandedIcon.Dispose();brandedIcon=null;}
         }
@@ -232,14 +239,14 @@ namespace G870Windows {
         }
         async void RequestExit(){exitRequested=true;while(busy)await Task.Delay(200);Close();}
         void ConfigureTray(){
-            tray.Icon=Icon??SystemIcons.Application;tray.Text="G870 Kontrol Merkezi";tray.Visible=true;
+            trayIcon=(Icon)(Icon??SystemIcons.Application).Clone();tray.Icon=trayIcon;tray.Text="G870 Kontrol Merkezi";tray.Visible=true;
             trayPopup=new TrayPopup(Icon,()=>OpenWindow(),()=>RequestExit(),async target=>{
                 if(busy || !connected)return;trayPopup.Hide();selected=target;loading=true;mode.SelectedIndex=target;loading=false;LoadEditor();UpdateCaption();await Apply();
             });
             startupItem.Checked=!demo && StartupService.Enabled;startupItem.Enabled=!demo;
             tray.MouseUp+=(s,e)=>{if(e.Button==MouseButtons.Left || e.Button==MouseButtons.Right){if(trayPopup.Visible)trayPopup.Hide();else trayPopup.ShowNear(Cursor.Position);}};
             tray.DoubleClick+=(s,e)=>OpenWindow();
-            FormClosed+=(s,e)=>{tray.Visible=false;tray.Dispose();trayPopup.Dispose();};
+            FormClosed+=(s,e)=>CleanupTray();
         }
         void OpenWindow(){if(trayPopup!=null)trayPopup.Hide();ShowInTaskbar=true;Show();if(WindowState==FormWindowState.Minimized)WindowState=FormWindowState.Normal;BringToFront();Activate();}
         void HideToTray(){Hide();ShowInTaskbar=false;}
@@ -345,7 +352,7 @@ namespace G870Windows {
                 if(trayPopup!=null)trayPopup.UpdateStatus(r.Status,true,r.Fan,r.Duty);
                 link.Text=demo?"●  Canlı bağlantı · Demo":"●  Canlı bağlantı";link.ForeColor=Color.FromArgb(47,170,90);
                 fanStatus.Text=r.Fan=="curve"?"Sessiz · %"+r.Duty+" istek":r.Fan=="max"?"Tam hız isteği etkin":"BIOS yönetimi";
-                footer.Text="BIOS modu: "+new[]{"Yüksek performans","Oyun","Ofis"}[r.Status.Mode]+"                         Kontrol sürümü · 0.6.3";
+                footer.Text="BIOS modu: "+new[]{"Yüksek performans","Oyun","Ofis"}[r.Status.Mode]+"                         Kontrol sürümü · v1.0.0";
                 for(int i=0;i<3;i++)modeButtons[i].Selected=(2-i)==r.Status.Mode;
                 if(!muxInitialized){muxInitialized=true;try{var muxReply=await client.Send(new Command{Action="muxread"});ShowMux(muxReply.Mux);}catch(Exception muxError){muxLabel.Text="MUX durumu okunamadı: "+muxError.Message;}}
                 if(!startupDone && DateTime.UtcNow>=nextRestoreAttempt){
