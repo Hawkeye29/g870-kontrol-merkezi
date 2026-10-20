@@ -90,3 +90,7 @@ msbuild G870KontrolMerkezi.sln /m /p:Configuration=Release /p:Platform=x64
 [Issues](../../issues) üzerinden cihaz modelini, Windows ve uygulama sürümünü, sorunu tekrar etme adımlarını yazabilirsin. Ekran görüntülerinden kişisel bilgilerini kaldır.
 
 [Kurulum ve kaldırma](docs/INSTALL.md) · [Donanım kapsamı](docs/HARDWARE.md) · [Gizlilik](docs/PRIVACY.md)
+
+## Katkılar
+
+Bu proje, OpenAI Codex desteğinden yararlanılarak geliştirilmiştir.
